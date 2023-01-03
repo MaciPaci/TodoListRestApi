@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "9d0f326b-0e86-41cc-b96a-40742f36b6dc",
+		"name": "Todo List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17969322"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"userID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"exampleName\",\n    \"email\": \"email@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/{{userID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"changedName\",\n    \"email\": \"email+1@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/{{userID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name\",\n    \"email\": \"email@g.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/{{userID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"taskID\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\": {{userID}},\n    \"title\": \"exampleTitle\",\n    \"description\": \"exampleDescription\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/task",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/task/{{taskID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task",
+						"{{taskID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/task",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Task List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/task/user/{{userID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task",
+						"user",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\": {{userID}},\n    \"title\": \"updatedTitle\",\n    \"description\": \"UpdatedDescription\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/task/{{taskID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task",
+						"{{taskID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"DONE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/task/{{taskID}}/status",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task",
+						"{{taskID}}",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/task/{{taskID}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task",
+						"{{taskID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/task/count",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"task",
+						"count"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
